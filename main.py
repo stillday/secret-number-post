@@ -4,6 +4,8 @@ import jinja2
 import webapp2
 import random
 
+secret = random.randint(0, 100)
+list = []
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
@@ -33,8 +35,6 @@ class MainHandler(BaseHandler):
         return self.render_template("hello.html")
 
     def post(self):
-        secret = random.randint(0, 100)
-        list = []
         number = int(self.request.get("num"))
 
         if number == secret:
