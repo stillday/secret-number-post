@@ -43,9 +43,11 @@ class MainHandler(BaseHandler):
 
         elif number < secret:
             self.write("Deine Tip war zu klein. Versuch es nochmal.")
+            self.render_template("hello.html")
 
         else:
             self.write("Dein Tip war zu gross. Versuche es nochmal")
+            self.render_template("hello.html")
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
