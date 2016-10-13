@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import os
 import jinja2
 import webapp2
@@ -39,14 +40,16 @@ class MainHandler(BaseHandler):
 
         if number == secret:
             self.write("Dein Tip war richtig. Folgende Zahlen hast du eingeben %s." % list)
-            self.write("Du hast % versuche benoetigt" % len(list))
+            self.write(" Du hast %s versuche benötigt" % len(list))
 
         elif number < secret:
             self.write("Deine Tip war zu klein. Versuch es nochmal.")
+            self.write(" Du hast bisher %s Versuche benötigt" % len(list))
             self.render_template("hello.html")
 
         else:
-            self.write("Dein Tip war zu gross. Versuche es nochmal")
+            self.write("Dein Tip war zu gross. Versuche es nochmal.")
+            self.write(" Du hast bisher %s Versuche benötigt" % len(list))
             self.render_template("hello.html")
 
 app = webapp2.WSGIApplication([
